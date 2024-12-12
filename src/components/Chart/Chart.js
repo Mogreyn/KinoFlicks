@@ -42,7 +42,7 @@ function Chart() {
                 className="movie-poster-main"
               />
               <h3 className="movie-title">{movie.title}</h3>
-              <p>{movie.release_date}</p>
+              <p className="movie-vote-average"> {movie.vote_average}</p>
             </div>
           </Link>
         ))}
