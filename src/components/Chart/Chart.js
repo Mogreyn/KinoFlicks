@@ -1,58 +1,52 @@
 import React, { useState, useEffect } from "react";
-import "./Chart.css";
-import MovieDetails from "../MovieDetails/MovieDetails";
+import { Link } from "react-router-dom"; // Импортируем Link
+import "./Chart.sass";
 
 function Chart() {
   const [movies, setMovies] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const apiKey = "d97fe0ef1a384d6b2d23d46d6e0ce4f2";
     const fetchMovies = async () => {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`
-      );
-      const data = await response.json();
-      setMovies(data.results);
+      try {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`
+        );
+        const data = await response.json();
+        setMovies(data.results);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+        setError("Произошла ошибка при загрузке данных.");
+        setIsLoading(false);
+      }
     };
 
     fetchMovies();
   }, []);
 
-  const handleMovieClick = (movie) => {
-    setSelectedMovie(movie);
-  };
-
-  const handleCloseDetails = () => {
-    setSelectedMovie(null);
-  };
-
   return (
-    <div className="app">
+    <div className="chart">
       <h1>Популярные фильмы</h1>
+      {isLoading && <p>Загрузка...</p>}
+      {error && <p>{error}</p>}
       <div className="movies-container">
         {movies.map((movie) => (
-          <div
-            className="movie-card"
-            key={movie.id}
-            onClick={() => handleMovieClick(movie)}
-          >
-            <div
-              className="movie-poster-container"
-              style={{
-                backgroundImage: `url(https://image.tmdb.org/t/p/w500${movie.poster_path})`,
-              }}
-            >
+          <Link key={movie.id} to={`/movies/${movie.id}`} className="movie-link">
+            <div className="movie-card">
+              <img
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.title}
+                className="movie-poster-main"
+              />
               <h3 className="movie-title">{movie.title}</h3>
-              <h2 className="movie-vote_average">{movie.vote_average}</h2>
+              <p>{movie.release_date}</p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
-
-      {selectedMovie && (
-        <MovieDetails movie={selectedMovie} onClose={handleCloseDetails} />
-      )}
     </div>
   );
 }
