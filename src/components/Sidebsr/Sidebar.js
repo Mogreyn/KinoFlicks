@@ -1,7 +1,7 @@
 // src/components/Sidebar/Sidebar.js
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Sidebar.sass'; // или .css в зависимости от вашего подхода
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Sidebar.sass"; // или .css в зависимости от вашего подхода
 
 const Sidebar = ({ movies }) => {
   return (

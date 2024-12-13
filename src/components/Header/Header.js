@@ -1,11 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import"./Header.sass"
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Header.sass";
 
-
-function Header (){
-    return(
-        <header className="header">
+function Header() {
+  return (
+    <header className="header">
       <nav className="nav">
         <ul className="nav-list">
           <li>
@@ -13,7 +12,7 @@ function Header (){
               Главная
             </Link>
           </li>
-         
+
           <li>
             <Link to="/about" className="nav-link">
               О нас
@@ -31,4 +30,4 @@ function Header (){
   );
 }
 
-export default Header
+export default Header;

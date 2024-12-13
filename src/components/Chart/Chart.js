@@ -34,7 +34,11 @@ function Chart() {
       {error && <p>{error}</p>}
       <div className="movies-container">
         {movies.map((movie) => (
-          <Link key={movie.id} to={`/movies/${movie.id}`} className="movie-link">
+          <Link
+            key={movie.id}
+            to={`/movies/${movie.id}`}
+            className="movie-link"
+          >
             <div className="movie-card">
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
