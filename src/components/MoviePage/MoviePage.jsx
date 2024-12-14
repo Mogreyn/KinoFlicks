@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./MoviePage.sass";
-import Sidebar from "../Sidebsr/Sidebar.js"; // Импортируем Sidebar
+import Sidebar from "../Sidebsr/Sidebar.jsx"; // Импортируем Sidebar
 
 function MoviePage() {
   const { id } = useParams(); // Получаем id из URL
