@@ -70,7 +70,7 @@ function MoviePage() {
             <h3>{movieDetails.release_date}</h3>
             <p>{movieDetails.overview}</p>
             <div className="movie-rating">
-              <h2>Рейтинг: {movieDetails.vote_average}</h2>
+              <h2>Rating: {parseFloat((Math.round(movieDetails.vote_average * 10) / 10).toFixed(1))}</h2>
             </div>
           </>
         )}
