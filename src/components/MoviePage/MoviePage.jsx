@@ -24,13 +24,13 @@ function MoviePage() {
         if (data && data.id) {
           setMovieDetails(data);
         } else {
-          setError("Не удалось загрузить детали фильма.");
+          setError("Error fetch movie data.");
         }
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching movie details:", error);
         setIsLoading(false);
-        setError("Произошла ошибка при загрузке данных.");
+        setError("ПError fetch movie data.");
       }
     };
 
