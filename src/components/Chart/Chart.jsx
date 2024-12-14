@@ -19,7 +19,7 @@ function Chart() {
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching movies:", error);
-        setError("Произошла ошибка при загрузке данных.");
+        setError("Error fetching data.");
         setIsLoading(false);
       }
     };
@@ -29,8 +29,8 @@ function Chart() {
 
   return (
     <div className="chart">
-      <h1>Популярные фильмы</h1>
-      {isLoading && <p>Загрузка...</p>}
+      <h1>TOP films</h1>
+      {isLoading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       <div className="movies-container">
         {movies.map((movie) => (
@@ -46,7 +46,7 @@ function Chart() {
                 className="movie-poster-main"
               />
               <h3 className="movie-title">{movie.title}</h3>
-              <p className="movie-vote-average"> {movie.vote_average}</p>
+              <p className="movie-vote-average"> {parseFloat((Math.round(movie.vote_average * 10) / 10).toFixed(1))}</p>
             </div>
           </Link>
         ))}

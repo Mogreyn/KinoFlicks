@@ -13,7 +13,7 @@ function MoviePage() {
   // Загрузка данных фильма
   useEffect(() => {
     const apiKey = "d97fe0ef1a384d6b2d23d46d6e0ce4f2";
-
+    
     // Функция для получения деталей фильма
     const fetchMovieDetails = async () => {
       try {
@@ -54,6 +54,7 @@ function MoviePage() {
   return (
     <div className="movie-page">
       <Sidebar movies={movies} /> {/* Добавляем Sidebar с фильмами */}
+
       <div className="movie-details">
         {isLoading && <p>Загрузка...</p>}
         {error && <p>{error}</p>}

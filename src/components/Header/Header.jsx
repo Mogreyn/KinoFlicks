@@ -9,19 +9,19 @@ function Header() {
         <ul className="nav-list">
           <li>
             <Link to="/" className="nav-link">
-              Главная
+              Home
             </Link>
           </li>
 
           <li>
             <Link to="/about" className="nav-link">
-              О нас
+              About
             </Link>
           </li>
           {/* Оставим пустые ссылки для будущих страниц */}
           <li>
             <Link to="/future-page" className="nav-link">
-              Будущая страница
+              Future***
             </Link>
           </li>
         </ul>
